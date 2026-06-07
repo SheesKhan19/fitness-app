@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-darker text-white font-sans;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF6B35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F77F00;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-primary hover:bg-accent px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-white shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-white shadow-lg hover:shadow-xl;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+}
+
+/* Input Styles */
+.input-field {
+  @apply w-full bg-dark border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors;
+}
+
+.input-field::placeholder {
+  @apply text-gray-500;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-dark rounded-xl border border-gray-700 p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B35 0%, #F77F00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
