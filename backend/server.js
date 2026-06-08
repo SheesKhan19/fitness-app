@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import connectDB from './config/db.js'
+import { ensureTrainersSeeded } from './utils/ensureTrainers.js'
 import authRoutes from './routes/auth.js'
 import postRoutes from './routes/posts.js'
 import trainerRoutes from './routes/trainers.js'
@@ -55,6 +56,7 @@ const PORT = process.env.PORT || 5000
 const startServer = async () => {
   try {
     await connectDB()
+    await ensureTrainersSeeded()
     app.listen(PORT, () => {
       console.log(`FitSphere Server running on port ${PORT}`)
       console.log(`Environment: ${process.env.NODE_ENV}`)

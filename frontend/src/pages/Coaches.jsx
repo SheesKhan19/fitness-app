@@ -97,67 +97,66 @@ export default function Coaches() {
         )}
 
         {/* Trainers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trainers.map((trainer) => (
-            <div key={trainer._id} className="card hover:border-primary transition-all">
-              {/* Image */}
-              <div className="w-full h-40 bg-gradient-to-br from-primary to-accent rounded-lg mb-4 overflow-hidden">
-                <img
-                  src={trainer.image}
-                  alt={trainer.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Info */}
-              <h3 className="text-lg font-bold mb-1">{trainer.name}</h3>
-
-              {/* Rating */}
-              <div className="flex items-center gap-1 mb-3">
-                <div className="flex text-yellow-400">
-                  {Array(5)
-                    .fill(0)
-                    .map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${i < Math.round(trainer.rating) ? 'fill-yellow-400' : 'opacity-30'}`}
-                      />
-                    ))}
+        {trainers.length === 0 ? (
+          <div className="rounded-lg border border-gray-700 bg-dark/50 px-4 py-8 text-center text-gray-300">
+            No coaches found. Try selecting <span className="text-primary font-semibold">All</span>.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trainers.map((trainer) => (
+              <div key={trainer._id} className="card hover:border-primary transition-all">
+                {/* Image */}
+                <div className="w-full h-40 bg-gradient-to-br from-primary to-accent rounded-lg mb-4 overflow-hidden">
+                  <img src={trainer.image} alt={trainer.name} className="w-full h-full object-cover" />
                 </div>
-                <span className="text-sm text-gray-400">{trainer.reviews} reviews</span>
-              </div>
 
-              {/* Experience */}
-              <p className="text-sm text-gray-400 mb-2">{trainer.experience} years experience</p>
+                {/* Info */}
+                <h3 className="text-lg font-bold mb-1">{trainer.name}</h3>
 
-              {/* Specialties */}
-              <div className="flex flex-wrap gap-1 mb-4">
-                {trainer.specialty.slice(0, 2).map((spec) => (
-                  <span
-                    key={spec}
-                    className="px-2 py-1 bg-primary/20 text-primary text-xs rounded"
+                {/* Rating */}
+                <div className="flex items-center gap-1 mb-3">
+                  <div className="flex text-yellow-400">
+                    {Array(5)
+                      .fill(0)
+                      .map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${i < Math.round(trainer.rating) ? 'fill-yellow-400' : 'opacity-30'}`}
+                        />
+                      ))}
+                  </div>
+                  <span className="text-sm text-gray-400">{trainer.reviews} reviews</span>
+                </div>
+
+                {/* Experience */}
+                <p className="text-sm text-gray-400 mb-2">{trainer.experience} years experience</p>
+
+                {/* Specialties */}
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {trainer.specialty.slice(0, 2).map((spec) => (
+                    <span key={spec} className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Rate */}
+                <p className="text-primary font-bold mb-4">${trainer.hourlyRate}/hour</p>
+
+                {/* Buttons */}
+                <div className="flex gap-2">
+                  <button className="btn-outline flex-1 text-sm">View Profile</button>
+                  <button
+                    onClick={() => handleBookConsultation(trainer._id)}
+                    className="btn-primary flex-1 text-sm"
                   >
-                    {spec}
-                  </span>
-                ))}
+                    Book
+                  </button>
+                </div>
               </div>
-
-              {/* Rate */}
-              <p className="text-primary font-bold mb-4">${trainer.hourlyRate}/hour</p>
-
-              {/* Buttons */}
-              <div className="flex gap-2">
-                <button className="btn-outline flex-1 text-sm">View Profile</button>
-                <button
-                  onClick={() => handleBookConsultation(trainer._id)}
-                  className="btn-primary flex-1 text-sm"
-                >
-                  Book
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

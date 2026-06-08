@@ -14,14 +14,8 @@ const trainerSchema = new mongoose.Schema(
     specialty: [
       {
         type: String,
-        enum: [
-          'Fat Loss',
-          'Bodybuilding',
-          'Powerlifting',
-          "Women's Fitness",
-          'Sports Performance',
-          'Nutrition',
-        ],
+        // Keep specialties flexible so your seed script (and future trainer input)
+        // doesn't fail validation and leave the coaches list empty.
       },
     ],
     experience: {
